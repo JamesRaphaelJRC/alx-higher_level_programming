@@ -1,1 +1,1 @@
-This repository contains all my tasks in ALX-SE programme on higher level programming
+This repository contains all my tasks on higher level programming in the ALX-SE program
