@@ -9,6 +9,8 @@ def print_matrix_integer(matrix=[[]]):
             transposed.append(transpose_row)
 
         for row in transposed:
-            for i in row:
-                print("{:d}".format(i), end=" ")
+            for i, num in enumerate(row):
+                print("{:d}".format(num), end="")
+                if i != len(row) - 1:
+                    print(" ", end="")
             print()
