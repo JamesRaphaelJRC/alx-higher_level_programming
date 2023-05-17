@@ -5,5 +5,5 @@ def uniq_add(my_list=[]):
         res = 0
         set_list = set(my_list)
         for num in set_list:
-           res += num
+            res += num
         return(res)
