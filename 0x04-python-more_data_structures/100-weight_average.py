@@ -1,11 +1,8 @@
-#!/usr/bin/python3
 def weight_average(my_list=[]):
-    if isinstance(my_list, list):
-        if len(my_list) == 0:
-            return (0)
-        numerator, denominator = 0, 0
-        i, j = 0, 1
-        for num_set in my_list:
-            numerator += num_set[i] * num_set[j]
-            denominator += num_set[j]
-        return (numerator / denominator)
+    if not isinstance(my_list, list) or len(my_list) == 0:
+        return 0
+    
+    numerator = sum(x * y for x, y in my_list)
+    denominator = sum(y for _, y in my_list)
+    
+    return numerator / denominator
