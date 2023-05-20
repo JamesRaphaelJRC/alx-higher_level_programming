@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def weight_average(my_list=[]):
     if isinstance(my_list, list):
-        if my_list is None:
+        if len(my_list) == 0:
             return (0)
         numerator, denominator = 0, 0
         i, j = 0, 1
