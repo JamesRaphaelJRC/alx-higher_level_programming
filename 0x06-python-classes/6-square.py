@@ -11,7 +11,7 @@ class Square:
         self.__size = size
         self.__position = position
 
-    ''' Get/set current size and position of Square object '''
+    ''' Get/set current size of Square object '''
     @property
     def size(self):
         return (self.__size)
@@ -25,6 +25,7 @@ class Square:
         else:
             self.__size = value
 
+    ''' Get/set value for position for Square object '''
     @property
     def position(self):
         return (self.__position)
