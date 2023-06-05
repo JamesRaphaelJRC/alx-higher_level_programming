@@ -1,0 +1,91 @@
+How to use 5-text_indentation.py
+===============================
+
+The module '5-text_indentation.py' defines a function 'text_indentation'
+which prints a text with 2 new lines after each of these characters '.', '?'
+and ':' are encountered.
+	prototype: text_indentation(text)
+	Where 'text' is the text string to be indented
+
+
+Usage
+=====
+
+Lets import the module in python interractive session
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Lets pass our first argument
+
+	>>> text_indentation("Hello, my name is James: James RC. Hope you are fine? Its a pleasure meeting you")
+	Hello, my name is James:
+	<BLANKLINE>
+	 James RC.
+	<BLANKLINE>
+	 Hope you are fine?
+	<BLANKLINE>
+	 Its a pleasure meeting you
+
+Great!
+
+It also work on a single tuple containing strings
+
+	>>> text_indentation(('ALX-is cool.Hope you like my projects?Thank you'))
+	ALX-is cool.
+	<BLANKLINE>
+	Hope you like my projects?
+	<BLANKLINE>
+	Thank you
+
+
+But not on multiple tuples
+
+	>>> text_indentation(('ALX-is cool.Hope you like my projects?Thank you'), ('Hello'))
+	Traceback (most recent call last):
+	TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+When a non-string character is passed to the function, TypeError is raised
+
+	>>> text_indentation(202)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+
+	>>> text_indentation(True)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+
+	>>> text_indentation(['Hello: I am Bond.'])
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+
+we can perform simple string multiplication and concatenation
+
+	>>> text_indentation('Hello.' * 3)
+	Hello.
+	<BLANKLINE>
+	Hello.
+	<BLANKLINE>
+	Hello.
+	<BLANKLINE>
+
+
+	>>> text_indentation('Hello.' + '?Where are you?')
+	Hello.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	Where are you?
+	<BLANKLINE>
