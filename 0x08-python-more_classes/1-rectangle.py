@@ -4,10 +4,11 @@
 
 
 class Rectangle():
-    '''Instantiation with optional width and height'''
+    '''Represent a rectangle.'''
     def __init__(self, width=0, height=0):
-        self._width = width
-        self._height = height
+        '''Instantiation with optional width and height'''
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
