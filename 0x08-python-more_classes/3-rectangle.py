@@ -58,5 +58,6 @@ class Rectangle:
 
         for i in range(self.__height):
             form.append('#' * self.__width)
-            form.append('\n')
+            if i != self.__height -1:
+                form.append('\n')
         return ("".join(form))
