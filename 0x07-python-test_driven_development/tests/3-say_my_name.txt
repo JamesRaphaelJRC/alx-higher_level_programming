@@ -1,0 +1,127 @@
+How to use '3-say_my_name.py'
+===========================
+
+The module '3-say_my_name.py' defines a function 'say_my_name' that prints a
+statement 'My name is <first name> <last name>'.
+	prototype: def say_my_name(first_name, last_name=""):
+	first name and last name are arguments parsed to the function
+
+Usage
+=====
+
+Lets import this function in python interactive session
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Lets pass 'James' 'Bond' as the first and second arguments respectively
+	>>> say_my_name('James', 'Bond')
+	My name is James Bond
+
+Great!
+
+What if we pass a single string argument to the function? The argument is
+automatically set as the first_name (last name can be an empty string -
+see the function prototype)
+
+	>>> say_my_name("James")
+	My name is James 
+
+
+Note that the function 'say_my_name' takes from 1 to 2 positional arguments.
+Lets try passing nothing to the function
+
+	>>> say_my_name()
+	Traceback (most recent call last):
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Lets try passing three arguments
+
+	>>> say_my_name('James', 'Bond', '007')
+	Traceback (most recent call last):
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+
+Passing a number in place of the argument will raise a TypeError
+	
+	>>> say_my_name('James', 7)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+
+
+        >>> say_my_name( 7, 'Bond')
+        Traceback (most recent call last):
+        TypeError: first_name must be a string
+
+
+	>>> say_my_name(9)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+
+A syntax error is raised when a number with leading zeros is passed
+
+	>>> say_my_name('James', 007)
+	Traceback (most recent call last):
+	SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+
+
+We can multiply any of the arguments by an integer (must be an integer)
+
+	>>> say_my_name(('James' * 3), 'Bond')
+	My name is JamesJamesJames Bond
+
+
+	>>> say_my_name('James', 'Bond' * 3)
+	My name is James BondBondBond
+
+
+	>>> say_my_name(('James' * 3.5), 'Bond')
+	Traceback (most recent call last):
+	TypeError: can't multiply sequence by non-int of type 'float'
+
+
+	>>> say_my_name('James', 'Bond' * 10e2)
+	Traceback (most recent call last):
+	TypeError: can't multiply sequence by non-int of type 'float'
+
+
+We can perform string concatenation for the arguments
+
+	>>> say_my_name('Jam' + 'es', 'Bond')
+	My name is James Bond
+
+	>>> say_my_name('James', 'Bond' + ' -007')
+	My name is James Bond -007
+
+
+When 'None' is passed as the argument, a TypeError is also raised
+
+	>>> say_my_name(None, 'Bond')
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+	
+
+	>>> say_my_name('Bond', None)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+	
+
+	>>> say_my_name(None)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+
+Lists, tuples or dictionaries cannot be passed as the argument(s)
+
+	>>> say_my_name(['James', 'Bond'], '007')
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+
+        >>> say_my_name(('James', 'Bond'), '007')
+        Traceback (most recent call last):
+        TypeError: first_name must be a string
+        
+
+	>>> say_my_name({'first_name': 'James'}, 'Bond')
+	Traceback (most recent call last):
+        TypeError: first_name must be a string
