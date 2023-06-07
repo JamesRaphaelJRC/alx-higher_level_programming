@@ -14,13 +14,18 @@ def text_indentation(text):
     '''
     if not isinstance(text, str):
         raise TypeError("text must be a string")
+    c = 0
+    while c < len(text) and text[c] == ' ':
+        c += 1
 
-    characters = [':', '.', '?']
-    result = " "
-
-    for char in text:
-        result += char
-        if char in characters:
-            result += '\n\n'
-
-    print(result.strip())
+    conditional_chars = [':', '.', '?']
+    while c < len(text):
+        print(text[c], end="")
+        if text[c] == "\n" or text[c] in conditional_chars:
+            if text[c] in conditional_chars:
+                print("\n")
+            c += 1
+            while c < len(text) and text[c] == ' ':
+                c += 1
+            continue
+        c += 1

@@ -20,11 +20,11 @@ Lets pass our first argument
 	>>> text_indentation("Hello, my name is James: James RC. Hope you are fine? Its a pleasure meeting you")
 	Hello, my name is James:
 	<BLANKLINE>
-	 James RC.
+	James RC.
 	<BLANKLINE>
-	 Hope you are fine?
+	Hope you are fine?
 	<BLANKLINE>
-	 Its a pleasure meeting you
+	Its a pleasure meeting you
 
 Great!
 
@@ -79,9 +79,11 @@ we can perform simple string multiplication and concatenation
 	Hello.
 	<BLANKLINE>
 	Hello.
+	<BLANKLINE>
 
 
 	>>> text_indentation('Hello.' + 'Where are you?')
 	Hello.
 	<BLANKLINE>
 	Where are you?
+	<BLANKLINE>
