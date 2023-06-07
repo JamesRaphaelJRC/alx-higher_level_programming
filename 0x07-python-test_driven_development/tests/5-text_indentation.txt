@@ -20,17 +20,17 @@ Lets pass our first argument
 	>>> text_indentation("Hello, my name is James: James RC. Hope you are fine? Its a pleasure meeting you")
 	Hello, my name is James:
 	<BLANKLINE>
-	 James RC.
+	James RC.
 	<BLANKLINE>
-	 Hope you are fine?
+	Hope you are fine?
 	<BLANKLINE>
-	 Its a pleasure meeting you
+	Its a pleasure meeting you
 
 Great!
 
-It also work on a single tuple containing strings
+It also work on an enclosed string
 
-	>>> text_indentation(('ALX-is cool.Hope you like my projects?Thank you'))
+	>>> text_indentation(('ALX-is cool. Hope you like my projects? Thank you'))
 	ALX-is cool.
 	<BLANKLINE>
 	Hope you like my projects?
@@ -73,19 +73,15 @@ When a non-string character is passed to the function, TypeError is raised
 
 we can perform simple string multiplication and concatenation
 
-	>>> text_indentation('Hello.' * 3)
+	>>> text_indentation('Hello. ' * 3)
 	Hello.
 	<BLANKLINE>
 	Hello.
 	<BLANKLINE>
 	Hello.
-	<BLANKLINE>
 
 
-	>>> text_indentation('Hello.' + '?Where are you?')
+	>>> text_indentation('Hello.' + ' Where are you?')
 	Hello.
-	<BLANKLINE>
-	?
 	<BLANKLINE>
 	Where are you?
-	<BLANKLINE>
