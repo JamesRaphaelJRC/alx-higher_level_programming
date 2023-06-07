@@ -23,6 +23,11 @@ class TestMaxInteger(unittest.TestCase):
         _max = max_integer([0.0, 2.3, 20.1, 99.99, 99.98, 20])
         self.assertEqual(_max, 99.99)
 
+    def test_one_element_list(self):
+        ''' Tests max_integer when list contains only one element.'''
+        _max = max_integer([8])
+        self.assertEqual(_max, 8)
+
     def test_empty_list(self):
         ''' tests max_integer when list is empty.'''
         _max = max_integer([])
