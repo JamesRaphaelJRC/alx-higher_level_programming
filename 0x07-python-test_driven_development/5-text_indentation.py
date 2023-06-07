@@ -17,16 +17,10 @@ def text_indentation(text):
 
     characters = [':', '.', '?']
     result = " "
-    skip_next_char = False
 
     for char in text:
-        if skip_next_char:
-            skip_next_char = False
-            continue
-
         result += char
         if char in characters:
             result += '\n\n'
-            skip_next_char = True
 
     print(result.strip())
