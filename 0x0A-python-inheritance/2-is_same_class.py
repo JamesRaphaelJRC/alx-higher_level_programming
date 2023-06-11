@@ -10,4 +10,4 @@ def is_same_class(obj, a_class):
         obj: The object to be checked
         a_class: The class used for comparism
     '''
-    return (issubclass(a_class))
+    return (isinstance(obj, a_class))
