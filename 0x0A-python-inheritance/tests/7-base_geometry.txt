@@ -1,0 +1,101 @@
+How to use '7-base_geometry.py'
+==============================
+
+The module '7-base_geometry' defines a class 'BaseGeometry' that has a method- 'area' that raises an Exception
+and another method integer_validator  that vlaidates 'value'.
+
+Please note: In the following examples, we assume that te first argument is always a string.
+
+
+Before we go further, lets import the module and in the python interractive session:
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+
+The method integer_validator requires 2 arguments. 1 must be a string, and 2 an integer > 0
+
+	>>> bg.integer_validator("my_int", 12)
+	>>> bg.integer_validator("width", 89)
+
+No error was raised which signified the variable "my_int" and "width" with values 12 and 18 respectively were validated.
+
+Now lets try passing a string as the second argument.
+
+	>>> try:
+	...     bg.integer_validator("name", 'John')
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] name must be an integer
+
+Noticed that we raised our own exception message where the type of error is enclosed in a square bracket.
+
+Remember, value must be > 0 otherwise, our customized ValueError is raised including our error message
+
+	>>> try:
+	...     bg.integer_validator("age", 0)
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[ValueError] age must be greater than 0
+
+
+	>>> try:
+	...     bg.integer_validator("distance", -2.5)
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] distance must be an integer
+
+It is worth to note that passing True and False as the second aargument act differently as True is associated with integer 1 and False is associated with integer 0.
+
+	>>> try:
+	...     bg.integer_validator("distance", True)
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	>>> 
+
+
+	>>> try:
+	...     bg.integer_validator("distance", False)
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[ValueError] distance must be greater than 0
+
+
+Lists, turples and dictionaries raise same error when passed as the second argument
+
+	try:
+	...     bg.integer_validator("distance", [2, 3, 4])
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] distance must be an integer
+
+
+	>>> try:
+	...     bg.integer_validator("distance", (2, 3, 4))
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] distance must be an integer
+
+
+	>>> try:
+	...     bg.integer_validator("distance", {'key': 1})
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] distance must be an integer
+
+
+Same scenerio plays out when None is passed as the second argument
+
+	>>> try:
+	...     bg.integer_validator("distance", None)
+	... except Exception as e:
+	...     print("[{}] {}".format(e.__class__.__name__, e))
+	... 
+	[TypeError] distance must be an integer
