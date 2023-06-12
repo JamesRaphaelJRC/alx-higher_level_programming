@@ -47,14 +47,13 @@ Remember, value must be > 0 otherwise, our customized ValueError is raised inclu
 	... 
 	[TypeError] distance must be an integer
 
-It is worth to note that passing True and False as the second aargument act differently as True is associated with integer 1 and False is associated with integer 0.
 
 	>>> try:
 	...     bg.integer_validator("distance", True)
 	... except Exception as e:
 	...     print("[{}] {}".format(e.__class__.__name__, e))
 	... 
-	>>> 
+	[TypeError] distance must be an integer
 
 
 	>>> try:
@@ -62,8 +61,7 @@ It is worth to note that passing True and False as the second aargument act diff
 	... except Exception as e:
 	...     print("[{}] {}".format(e.__class__.__name__, e))
 	... 
-	[ValueError] distance must be greater than 0
-
+	[TypeError] distance must be an integer
 
 Lists, turples and dictionaries raise same error when passed as the second argument
 
