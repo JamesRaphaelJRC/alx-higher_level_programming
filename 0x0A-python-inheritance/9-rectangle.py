@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 ''' Defines a class Rectangle.'''
-BaseGeometry= __import__('7-base_geometry').BaseGeometry
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
@@ -17,6 +17,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         ''' Returns the str() and print() representation of the Rectangle'''
-        str_rep  = "[" + str(self.__class__.__name__) + "] "
+        str_rep = "[" + str(self.__class__.__name__) + "] "
         str_rep += str(self.__width) + "/" + str(self.__height)
         return (str_rep)
