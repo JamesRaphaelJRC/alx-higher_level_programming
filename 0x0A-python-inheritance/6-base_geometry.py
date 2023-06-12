@@ -4,6 +4,7 @@
 
 
 class BaseGeometry():
+    ''' defines a method called area'''
     def area(self):
         ''' Defines a public instance method 'area'.'''
         raise Exception("area() is not implemented")
