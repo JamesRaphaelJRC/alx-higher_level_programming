@@ -12,4 +12,5 @@ def append_after(filename="", search_string="", new_string=""):
                 wholefile.insert(line + 1, new_string)
                 break
         myFile.seek(0)
-        myFile.writelines(wholefile)
+        if len(wholefile) != 0:
+            myFile.writelines(wholefile)
