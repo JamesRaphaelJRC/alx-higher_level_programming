@@ -15,7 +15,8 @@ class Student:
             if attrs is a list of strings, only attributes contained in this
             string will be retrived otherwise, all attributes are retrived.
         '''
-        if attrs or isinstance(attrs, list):
+        if (type(attrs) == list and
+                all(type(elements) == str for elements in attrs)):
             return {at: getattr(self, at) for at in attrs if hasattr(self, at)}
         else:
             return self.__dict__
