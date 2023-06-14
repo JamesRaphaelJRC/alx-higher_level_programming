@@ -5,7 +5,7 @@
 class Student:
     ''' Represents the class Student.'''
     def__init__(self, first_name, last_name, age):
-        ''' Instantation'''
+        ''' Initializes a new Student object'''
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
