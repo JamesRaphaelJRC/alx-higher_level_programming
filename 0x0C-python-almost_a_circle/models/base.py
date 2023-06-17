@@ -42,9 +42,65 @@ class Base:
                 File must be overwritten if it already exists.
         '''
         with open(cls.__name__ + ".json", 'w', encoding="UTF-8") as jsonFile:
-            json_list_of_objs = []
+            list_of_obj_dicts = []
             for obj in list_objs:
                 obj_dict = obj.to_dictionary()
-                json_list_of_objs.append(obj_dict)
-            json_str = Base.to_json_string(json_list_of_objs)
+                list_of_obj_dicts.append(obj_dict)
+
+            json_str = Base.to_json_string(list_of_obj_dicts)
             jsonFile.write(json_str)
+
+    @staticmethod
+    def from_json_string(json_string):
+        ''' Returns the list of thhe JSON string representation of json_string.
+
+            Where:
+                json_string is a string representing a list of dictionaries
+
+            Condition:
+                If json_string is None or empty, an empty list is returned
+                otherwise a list represented by json_string.
+        '''
+        if json_string is None and len(json_string) == 0:
+            return "[]"
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        ''' Returns an instance with all attributes already set.
+
+            Where:
+                **dictionary can be thought as a double pointer to a dictionary
+
+            Condition:
+                To use the update method to assign all attributes, a 'dummy'
+                instance is first created. i.e. a Rectangle or Square instance
+                with dummy mandatory attributes (width, height, size, etc)
+                then the update is called to this dummy instance to apply the
+                real values.
+
+                **dictionary must be used as **kwards of the method - update
+        '''
+        if dictionary and dictionary is not {}:
+            if cls.__name__ == 'Rectangle':  # Checks the child class calling
+                new_obj = cls(1, 1)
+            else:
+                new_obj = cls(1)
+            new_obj.update(**dictionary)
+            return new_obj
+
+    @classmethod
+    def load_from_file(cls):
+        ''' Returns a list of instances.
+
+            condition:
+                If file does not exist, an empty list is returned
+                Otherwise a list of instances.
+        '''
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r', encoding="UTF-8") as jsonFile:
+               list_of_contents = Base.from_json_string(jsonFile.read())
+            return [cls.create(**content) for content in list_of_contents]
+        except FileNotFoundError:
+            return []
