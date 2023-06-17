@@ -27,7 +27,7 @@ class Base:
                 is retuned.
         '''
         if list_dictionaries is None or len(list_dictionaries) == 0:
-            return "[]"
+            return []
         return json.dumps(list_dictionaries)
 
     @classmethod
@@ -62,7 +62,7 @@ class Base:
                 otherwise a list represented by json_string.
         '''
         if json_string is None and len(json_string) == 0:
-            return "[]"
+            return []
         return json.loads(json_string)
 
     @classmethod
