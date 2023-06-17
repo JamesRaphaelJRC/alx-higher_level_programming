@@ -95,3 +95,46 @@ class Rectangle(Base):
         string += str(self.__x) + '/' + str(self.__y) + ' - '
         string += str(self.__width) + '/' + str(self.__height)
         return string
+
+    def update(self, *args, **kwargs):
+        ''' Updates class Rectangle by re-arranging the order of its arguments
+
+            Order of re-arrangement:
+                1st argument will be the id attribute
+                2nd argument will be the width attribute
+                3rd argument will be the height attribute
+                4th argument will be the x attribute
+                5th argument will be the y attribute
+        '''
+        if args and len(args) != 0:
+            if len(args) != 0:
+                arg_count = len(args)
+
+                if arg_count >= 1:
+                    if args[0] is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = args[0]
+                if arg_count >= 2:
+                    self.width = args[1]
+                if arg_count >= 3:
+                    self.height = args[2]
+                if arg_count >= 4:
+                    self.x = args[3]
+                if arg_count >= 5:
+                    self.y = args[4]
+        elif kwargs and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    if value is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'height':
+                    self.height = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value
