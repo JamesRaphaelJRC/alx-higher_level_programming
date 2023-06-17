@@ -91,7 +91,7 @@ class Rectangle(Base):
 
     def __str__(self):
         ''' Returns the str() representation of the Rectangle.'''
-        string = '[' + type(self).__name__ + '] ' + '(' + str(self.id) + ')'
+        string = '[' + type(self).__name__ + '] ' + '(' + str(self.id) + ') '
         string += str(self.__x) + '/' + str(self.__y) + ' - '
         string += str(self.__width) + '/' + str(self.__height)
         return string
@@ -138,3 +138,9 @@ class Rectangle(Base):
                     self.x = value
                 elif key == 'y':
                     self.y = value
+
+    def to_dictionary(self):
+        ''' Returns a dictionary representation of a Rectangle.'''
+        dictionary = dict([('x', self.x), ('y', self.y), ('id', self.id),
+                           ('height', self.height), ('width', self.width)])
+        return dictionary
