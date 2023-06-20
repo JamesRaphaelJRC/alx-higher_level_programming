@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' Defines a class 'Base'.'''
 import json
+import csv
 
 
 class Base:
@@ -119,13 +120,13 @@ class Base:
             if list_objs is None:
                 cvsFile.write("[]")
             else:
-                list_of_obj_dicts = []
+                if cls.__name__ is "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
                 for obj in list_objs:
-                    obj_dict = obj.to_dictionary()
-                    list_of_obj_dicts.append(obj_dict)
-
-                serialized_list = Base.to_json_string(list_of_obj_dicts)
-                cvsFile.write(serialized_list)
+                    writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -136,7 +137,13 @@ class Base:
 
         try:
             with open(filename, 'r', encoding="UTF-8") as csvFile:
-                list_of_contents = Base.from_json_string(csvFile.read())
-            return [cls.create(**content) for content in list_of_contents]
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
+                list_dicts = [dict([key, int(value)] for k, v in d.items())
+                              for d in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
