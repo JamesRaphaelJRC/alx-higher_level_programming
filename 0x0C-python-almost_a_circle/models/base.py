@@ -42,13 +42,16 @@ class Base:
                 File must be overwritten if it already exists.
         '''
         with open(cls.__name__ + ".json", 'w', encoding="UTF-8") as jsonFile:
-            list_of_obj_dicts = []
-            for obj in list_objs:
-                obj_dict = obj.to_dictionary()
-                list_of_obj_dicts.append(obj_dict)
+            if list_objs is None:
+                jsonFile.write("[]")
+            else:
+                list_of_obj_dicts = []
+                for obj in list_objs:
+                    obj_dict = obj.to_dictionary()
+                    list_of_obj_dicts.append(obj_dict)
 
-            json_str = Base.to_json_string(list_of_obj_dicts)
-            jsonFile.write(json_str)
+                json_str = Base.to_json_string(list_of_obj_dicts)
+                jsonFile.write(json_str)
 
     @staticmethod
     def from_json_string(json_string):
