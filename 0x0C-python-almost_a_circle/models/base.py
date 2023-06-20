@@ -116,7 +116,7 @@ class Base:
         '''
         filename = cls.__name__ + "csv"
 
-        with open(filename, 'w', encoding="UTF-8") as csvFile:
+        with open(filename, 'w', newline="") as csvFile:
             if list_objs is None or len(list_objs) == 0:
                 csvFile.write("[]")
             else:
@@ -136,7 +136,7 @@ class Base:
         filename = cls.__name__ + "csv"
 
         try:
-            with open(filename, 'r', encoding="UTF-8") as csvFile:
+            with open(filename, 'r', newline="") as csvFile:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
@@ -145,5 +145,5 @@ class Base:
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
                               for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
-        except FileNotFoundError:
+        excepi IOError:
             return []
