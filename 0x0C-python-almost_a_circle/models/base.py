@@ -145,5 +145,5 @@ class Base:
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
                               for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
-        excepi IOError:
+        except IOError:
             return []
