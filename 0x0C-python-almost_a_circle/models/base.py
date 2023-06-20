@@ -100,7 +100,7 @@ class Base:
         filename = cls.__name__ + ".json"
         try:
             with open(filename, 'r', encoding="UTF-8") as jsonFile:
-               list_of_contents = Base.from_json_string(jsonFile.read())
+                list_of_contents = Base.from_json_string(jsonFile.read())
             return [cls.create(**content) for content in list_of_contents]
         except FileNotFoundError:
             return []
