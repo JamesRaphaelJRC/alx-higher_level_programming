@@ -28,7 +28,7 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         ''' Updates the class Square by re-arranging the order of the arguments
-            
+
             Re-arrangement style:
                 1st argument will be the id attribute
                 2nd argument will be the size attribute
