@@ -65,7 +65,7 @@ class Base:
                 otherwise a list represented by json_string.
         '''
         if json_string is None and len(json_string) == 0:
-            return []
+            return "[]"
         return json.loads(json_string)
 
     @classmethod
