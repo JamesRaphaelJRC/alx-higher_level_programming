@@ -107,3 +107,36 @@ class Base:
             return [cls.create(**content) for content in list_of_contents]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        ''' serializes a CSV serializes a Rectangle/Square and saves it into
+            a CSV file.
+        '''
+        filename = cls.__name__ + "csv"
+
+        with open(filename, 'w', encoding="UTF-8") as cvsFile:
+            if list_objs is None:
+                cvsFile.write("[]")
+            else:
+                list_of_obj_dicts = []
+                for obj in list_objs:
+                    obj_dict = obj.to_dictionary()
+                    list_of_obj_dicts.append(obj_dict)
+
+                serialized_list = Base.to_json_string(list_of_obj_dicts)
+                cvsFile.write(serialized_list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        ''' Reads data from a csv file and a deserialized list (of instances
+            of a Rectangle/Square).
+        '''
+        filename = cls.__name__ + "csv"
+
+        try:
+            with open(filename, 'r', encoding="UTF-8") as csvFile:
+                list_of_contents = Base.from_json_string(csvFile.read())
+            return [cls.create(**content) for content in list_of_contents]
+        except FileNotFoundError:
+            return []
