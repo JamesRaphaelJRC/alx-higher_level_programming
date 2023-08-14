@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# - This script creates a file, change its permission, writes into it and opens it in vim automatically
+
 if [ $# -eq 0 ]; then
 	echo "No filename provided!"
 	exit 1
