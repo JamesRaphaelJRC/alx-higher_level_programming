@@ -1,8 +1,6 @@
 #!/usr/bin/node
 const length = process.argv.length - 2;
-if (length === 0) {
-  console.log(0);
-} else if (length === 1) {
+if (length < 2) {
   console.log(0);
 } else {
   let j = 0;
