@@ -11,7 +11,8 @@ if __name__ == "__main__":
                          passwd=password, db=db_name)
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM `states` WHERE `name` LIKE 'N%'")
+    query = "SELECT * FROM `states` WHERE `name` LIKE 'N%' COLLATE utf8mb4_bin"
+    cursor.execute(query)
     allStates = cursor.fetchall()
 
     for state in allStates:
