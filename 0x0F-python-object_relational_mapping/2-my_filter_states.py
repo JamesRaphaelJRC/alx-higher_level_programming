@@ -13,7 +13,8 @@ if __name__ == "__main__":
                          passwd=password, db=db_name)
     cursor = db.cursor()
 
-    query = "SELECT * FROM `states` WHERE `name`='{}'".format(sys.argv[4])
+    query = "SELECT * FROM `states` WHERE `name`="
+    query += "'{}' COLLATE utf8mb4_bin".format(sys.argv[4])
     cursor.execute(query)
     allStates = cursor.fetchall()
 
