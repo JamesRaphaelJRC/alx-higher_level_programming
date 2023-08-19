@@ -9,6 +9,9 @@ Base = declarative_base()
 
 
 class State(Base):
+    ''' Represents a state for a MySQL database
+        states is set as the table name with 2 columns id and name
+    '''
     __tablename__ = 'states'
 
     id = Column(Integer, primary_key=True)
