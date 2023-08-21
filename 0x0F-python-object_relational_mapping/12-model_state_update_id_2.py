@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Prints the State object with name passed as argument from a database '''
+'''Updates a State object with id == 2'''
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
